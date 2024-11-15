@@ -1,10 +1,10 @@
 #ifndef list_ASSERTION
 #define list_ASSERTION
 
-#include "header.h"
+#include "list.h"
 
 
-void ListAssertion(struct list_of_data_t *list);
+void ListAssertion(struct list_t *list);
 
 
 

@@ -2,7 +2,7 @@
 
 
 
-void RemoveElem (struct list_of_data_t *list, int removing_address) {
+void RemoveElem (struct list_t *list, int removing_address) {
     ListAssertion(list);
 
     if (list->size <= 0 || removing_address <= 0) {
@@ -11,7 +11,7 @@ void RemoveElem (struct list_of_data_t *list, int removing_address) {
         exit;
     }
 
-    int address_of_removed_element = TellMeAdressOfRemovedElemIndex(list, removing_address);
+    int address_of_removed_element = GetRemovedElemAdress(list, removing_address);
 
 
     (list->next)[(list->prev)[address_of_removed_element]] = (list->next)[address_of_removed_element];
@@ -29,7 +29,7 @@ void RemoveElem (struct list_of_data_t *list, int removing_address) {
 
 
 
-int TellMeAdressOfRemovedElemIndex(struct list_of_data_t *list, int removing_address) {
+int GetRemovedElemAdress(struct list_t *list, int removing_address) {
     ListAssertion(list);
 
     int temp = -1; //<0
@@ -37,7 +37,7 @@ int TellMeAdressOfRemovedElemIndex(struct list_of_data_t *list, int removing_add
         if ((list->seq_addr)[i] > removing_address)
             (list->seq_addr)[i] --;
 
-        else if ((list->seq_addr)[i] == removing_address)
+        else if (list->seq_addr[i] == removing_address)
             temp = i;
     }
 

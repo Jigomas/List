@@ -1,37 +1,53 @@
 #include "list_assertion.h"
 
 
-void ListAssertion(struct list_of_data_t *list) {
-
-    if (list->data == NULL) {
-        printf("(data) adress is equal to NULL\n");
+void ListAssertion(struct list_t *list) {
+    if (list->code_of_programm == ERROR) {
+        fprintf(stderr, "(code_of_program) is equal to 0\n");
         list->code_of_programm = ERROR;
 
-        abort();
+        assert(0);
+        return;
+    }
+
+
+    if (list == NULL) {
+        fprintf(stderr, "(list) adress is equal to NULL\n");
+        list->code_of_programm = ERROR;
+
+        assert(0);
+        return;
+    }
+
+    if (list->data == NULL) {
+        fprintf(stderr, "(data) adress is equal to NULL\n");
+        list->code_of_programm = ERROR;
+
+        assert(0);
         return;
     }
 
     else if (list->next == NULL) {
-        printf("(next) adress is equal to NULL\n");
+        fprintf(stderr, "(next) adress is equal to NULL\n");
         list->code_of_programm = ERROR;
 
-        abort();
+        assert(0);
         return;
     }
 
     else if (list->prev == NULL) {
-        printf("(prev) adress is equal to NULL\n");
+        fprintf(stderr, "(prev) adress is equal to NULL\n");
         list->code_of_programm = ERROR;
 
-        abort();
+        assert(0);
         return;
     }
 
     else if (list->capacity != AMOUNT_OF_ELEMENTS + 1) {
-        printf("(capacity) is not the same as it supposed to be\n");
+        fprintf(stderr, "(capacity) is not the same as it supposed to be\n");
         list->code_of_programm = ERROR;
 
-        abort();
+        assert(0);
         return;
     }
 

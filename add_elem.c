@@ -2,24 +2,24 @@
 
 
 
-void AddElem (struct list_of_data_t *list, int pushing_index_in_sequence, int number_to_push) {
+void AddElem (struct list_t *list, int pushing_index_in_sequence, int number_to_push) {
     ListAssertion(list);
 
     if (list->size >= list->capacity - 1) {
         fprintf(stderr, "Overfillment\n");
-        assert(0);
-        exit;
+        list->code_of_programm = 0;
+        return;
     }
 
     int next_free_addr = abs(list->next_free);
     list->next_free    = abs((list->next)[list->next_free]);
 
-    int address_of_previous_element = TellMeAdressOfPushedElemIndex(list, pushing_index_in_sequence);
+    int address_of_previous_element = GetPushedElemAdress(list, pushing_index_in_sequence);
 
     //fprintf(stderr, "address_of_previous_element   %d\n", address_of_previous_element);
     //fprintf(stderr, "pushing_index_in_sequence     %d\n", pushing_index_in_sequence);
 
-    (list->seq_addr)[next_free_addr] = pushing_index_in_sequence + 1;
+    (list->seq_addr)[next_free_addr] = address_of_previous_element + 1;
     list->size ++;
     (list->data)[next_free_addr] = number_to_push;
 
@@ -34,7 +34,7 @@ void AddElem (struct list_of_data_t *list, int pushing_index_in_sequence, int nu
 
 
 
-int TellMeAdressOfPushedElemIndex(struct list_of_data_t *list, int pushing_index_in_sequence) {
+int GetPushedElemAdress(struct list_t *list, int pushing_index_in_sequence) {
     ListAssertion(list);
 
     int temp = -1; //<0

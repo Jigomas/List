@@ -1,12 +1,12 @@
 #ifndef LIST_CTOR
 #define LIST_CTOR
 
-#include "header.h"
+#include "list.h"
 #include "dumper.h"
 
 
 
-int ListCtor(struct list_of_data_t *list);
+int ListCtor(struct list_t *list);
 
 
 

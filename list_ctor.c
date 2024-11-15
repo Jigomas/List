@@ -1,10 +1,34 @@
 #include "list_ctor.h"
 
-int ListCtor(struct list_of_data_t *list) {
+int ListCtor(struct list_t *list) {
+    if (list == NULL) {
+        list->code_of_programm = ERROR;
+        return ERROR;
+    }
+
     list->seq_addr = (list_elem_t*)calloc(list->capacity, sizeof(int));
+    if (list->seq_addr == NULL) {
+        list->code_of_programm = ERROR;
+        return ERROR;
+    }
+
     list->data     = (list_elem_t*)calloc(list->capacity, sizeof(list_elem_t));
+    if (list->data == NULL) {
+        list->code_of_programm = ERROR;
+        return ERROR;
+    }
+
     list->next     = (list_elem_t*)calloc(list->capacity, sizeof(int));
+    if (list->next == NULL) {
+        list->code_of_programm = ERROR;
+        return ERROR;
+    }
+
     list->prev     = (list_elem_t*)calloc(list->capacity, sizeof(int));
+    if (list->prev == NULL) {
+        list->code_of_programm = ERROR;
+        return ERROR;
+    }
 
     list->next_free = 1;
     list->size      = 0;
@@ -32,7 +56,7 @@ int ListCtor(struct list_of_data_t *list) {
 
     list->code_of_programm = ALL_GOOD;
 
-    CallDumperFromFunc;
+    CALLDUMPERFROMFUNC;
 
     return ALL_GOOD;
 }
