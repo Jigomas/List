@@ -9,7 +9,7 @@
 - Без внешних зависимостей
 
 ## Использование
-'''c
+```c
 #include "List.h"
 
 List list = {};
@@ -19,6 +19,7 @@ ListAdd(&list, 42);  // Добавление элемента
 ListPrint(&list);    // Вывод списка
 
 ListFree(&list);     // Очистка памяти
-'''
+
+
 ## Сборка
 gcc -std=c11 List.c main.c -o list
