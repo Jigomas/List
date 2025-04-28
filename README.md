@@ -19,7 +19,7 @@ ListAdd(&list, 42);  // Добавление элемента
 ListPrint(&list);    // Вывод списка
 
 ListFree(&list);     // Очистка памяти
-
+```
 
 ## Сборка
 gcc -std=c11 List.c main.c -o list
